@@ -3,7 +3,7 @@ from st_keyup import st_keyup
 
 st.warning("This application is for trial purposes alone. Personally identifying information should never be entered. The application may not be used in the real world. The application does not replace assessment by healthcare professionals.")
 
-text = st_keyup("Enter a value", key="0", value="enter a text", debounce=500, label_visibility="collapsed") + " "
+text = st_keyup("Enter a medical history", key="0", value="A 23-yo male presents with diarrhea and vomiting since three weeks.", debounce=500, label_visibility="collapsed") + " "
 
 from deep_translator import GoogleTranslator
 
