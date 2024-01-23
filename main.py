@@ -56,4 +56,8 @@ prompt = PromptTemplate(
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 
 if st.button("Submit"):
-    st.write(llm_chain.run(medical_entities))
+    try:
+        output = llm_chain.run(medical_entities)
+    except:
+        output = "Please try again."
+    st.write(output)
