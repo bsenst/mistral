@@ -28,7 +28,7 @@ extracted_entities = [
 ]
 
 medical_entities = " ".join([ent["text"] for ent in extracted_entities])
-medical_entities = " ".join(medical_entities.split(" ##"))
+medical_entities = "".join(medical_entities.split(" ##"))
 
 # Print the extracted medical entities
 st.write("Extracted Medical Entities:", medical_entities)
