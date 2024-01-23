@@ -4,6 +4,7 @@ from st_keyup import st_keyup
 st.warning("This application is for trial purposes alone. Personally identifying information should never be entered. The application may not be used in the real world. The application does not replace assessment by healthcare professionals.")
 
 text = st_keyup("Enter a medical history", key="0", value="A 23-yo male presents with diarrhea and vomiting since three weeks.", debounce=500, label_visibility="collapsed") + " "
+text = text.replace(".", "")
 
 from deep_translator import GoogleTranslator
 
@@ -17,9 +18,6 @@ from transformers import pipeline
 # Load the NER pipeline with the camembert/ner-medical model
 ner_pipeline = pipeline("ner", model="d4data/biomedical-ner-all")
 
-# Example medical text
-# text = "The patient was diagnosed with diabetes and prescribed insulin."
-
 # Perform named entity recognition
 medical_entities = ner_pipeline(text)
 
@@ -30,6 +28,7 @@ extracted_entities = [
 ]
 
 medical_entities = " ".join([ent["text"] for ent in extracted_entities])
+medical_entities = " ".join(medical_entities.split(" ##"))
 
 # Print the extracted medical entities
 st.write("Extracted Medical Entities:", medical_entities)
